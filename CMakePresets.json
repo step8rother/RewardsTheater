@@ -54,7 +54,9 @@
         "QT_VERSION": "6",
         "CMAKE_SYSTEM_VERSION": "10.0.18363.657",
         "ENABLE_FRONTEND_API": false,
-        "ENABLE_QT": false
+        "ENABLE_QT": false,
+        "VCPKG_TARGET_TRIPLET": "x64-windows-static-md",
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake"
       }
     },
     {
