@@ -197,10 +197,7 @@ ${_usage_host:-}"
   if (( ! (${skips[(Ie)all]} + ${skips[(Ie)build]}) )) {
     log_group "Configuring ${product_name}..."
 
-    local -a cmake_args=(
-      -DCMAKE_TOOLCHAIN_FILE="${project_root}/vcpkg/scripts/buildsystems/vcpkg.cmake"
-      -DVCPKG_TARGET_TRIPLET=${_vcpkg_target_triplet}
-    )
+    local -a cmake_args=()
     local -a cmake_build_args=(--build)
     local -a cmake_install_args=(--install)
 
@@ -252,7 +249,11 @@ ${_usage_host:-}"
         read -r _ _ cmake_version <<< "$(cmake --version)"
 
         if [[ ${CPUTYPE} != ${target##*-} ]] {
-          cmake_args+=(-D"VCPKG_CHAINLOAD_TOOLCHAIN_FILE=${project_root}/cmake/linux/toolchains/${target##*-}-linux-gcc.cmake")
+          if is-at-least 3.21.0 ${cmake_version}; then
+            cmake_args+=(--toolchain "${project_root}/cmake/linux/toolchains/${target##*-}-linux-gcc.cmake")
+          else
+            cmake_args+=(-D"CMAKE_TOOLCHAIN_FILE=${project_root}/cmake/linux/toolchains/${target##*-}-linux-gcc.cmake")
+          fi
         }
 
         cmake_build_args+=(--preset ${_preset}-${target##*-} --config ${config})

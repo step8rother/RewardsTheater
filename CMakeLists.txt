@@ -69,7 +69,6 @@ if(MSVC)
 endif()
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES INTERPROCEDURAL_OPTIMIZATION TRUE)
 
-# Libraries from vcpkg
 set(Boost_USE_STATIC_LIBS ON)
 find_package(Boost REQUIRED COMPONENTS system url json)
 find_package(OpenSSL REQUIRED)
