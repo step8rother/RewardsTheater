@@ -25,3 +25,5 @@ build.ps1
 cmake/.CMakeBuildNumber
 .ccache.conf
 boost
+fmt
+openssl

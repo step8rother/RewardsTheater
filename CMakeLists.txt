@@ -75,7 +75,7 @@ find_package(OpenSSL REQUIRED)
 find_package(fmt REQUIRED)
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC ${Boost_INCLUDE_DIRS})
 target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC Boost::system Boost::url Boost::json
-                                                   OpenSSL::SSL OpenSSL::Crypto fmt::fmt)
+                                                   OpenSSL::SSL OpenSSL::Crypto fmt::fmt-header-only)
 
 # Import libobs as main plugin dependency
 find_package(libobs REQUIRED)
