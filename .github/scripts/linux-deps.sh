@@ -9,7 +9,7 @@ if [[ ! -d ./boost ]]; then
   echo "Building Boost"
   mkdir boost
   pushd boost
-  curl https://archives.boost.io/release/1.85.0/source/boost_1_85_0.tar.gz > boost.tar.gz
+  wget -O boost.tar.gz https://archives.boost.io/release/1.85.0/source/boost_1_85_0.tar.gz
   tar -xzf boost.tar.gz --strip-components=1
   rm boost.tar.gz
   ./bootstrap.sh link=static
