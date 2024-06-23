@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [[ ! -e ./CMakeLists.txt ]]; then
   echo "cwd should be the plugin directory!"
