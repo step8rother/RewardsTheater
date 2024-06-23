@@ -242,12 +242,14 @@ ${_usage_host:-}"
         if (( _loglevel == 0 )) xcbeautify_opts+=(--quiet)
         ;;
       linux-*)
+        ${project_root}/.github/scripts/linux-deps.sh
         cmake_args+=(
           --preset ${_preset}-${target##*-}
           -G "${generator}"
           -DQT_VERSION=${QT_VERSION:-6}
           -DCMAKE_BUILD_TYPE=${config}
           -DCMAKE_INSTALL_PREFIX=/usr
+          -DBoost_ROOT="${project_root}/boost"
         )
 
         local cmake_version
