@@ -74,6 +74,11 @@ function Build {
         $CmakeArgs += @(
             '--preset', $Preset
         )
+        
+        $CmakeArgs += @(
+            "-DVCPKG_TARGET_TRIPLET=${script:Target}-windows-static-md",
+            "-DCMAKE_TOOLCHAIN_FILE=$(Resolve-Path -Path "${ProjectRoot}/vcpkg/scripts/buildsystems/vcpkg.cmake")"
+        )
 
         $CmakeBuildArgs += @(
             '--build'
