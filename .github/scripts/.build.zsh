@@ -225,13 +225,14 @@ ${_usage_host:-}"
           }
         }
 
+        ${project_root}/.github/scripts/macos-deps.zsh
         cmake_args+=(
           -DCODESIGN_TEAM=${CODESIGN_TEAM:-}
           -DCODESIGN_IDENTITY=${CODESIGN_IDENT:--}
-          -DBoost_ROOT="${project_root}/boost/boost_1_85_0"
-          -DBOOST_LIBRARYDIR="${project_root}/boost/boost_1_85_0/universal"
-          -DOPENSSL_ROOT_DIR="${project_root}/openssl/openssl-3.3.1"
-          -DOPENSSL_CRYPTO_LIBRARY="${project_root}/openssl/openssl-3.3.1/libcrypto.dylib"
+          -DBoost_ROOT="${project_root}/boost"
+          -DBOOST_LIBRARYDIR="${project_root}/boost/universal"
+          -DOPENSSL_ROOT_DIR="${project_root}/openssl"
+          -DOPENSSL_CRYPTO_LIBRARY="${project_root}/openssl/libcrypto.dylib"
         )
 
         cmake_build_args+=(--preset ${_preset} --parallel --config ${config} -- ONLY_ACTIVE_ARCH=NO -arch arm64 -arch x86_64)
